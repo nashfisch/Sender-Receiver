@@ -9,21 +9,17 @@
 #include <netdb.h>
 
 int main(int argc, char* argv[]) {
-    if (argc != 4) {
-        std::cerr << "Usage " << argv[0] << " sender_host, sender_port, receiver_port" << std::endl;
+    if (argc != 3) {
+        std::cerr << "Usage " << argv[0] << " sender_host, sender_port" << std::endl;
         return 1;
     }
 
     std::string senderDes = argv[1];
     std::string senderPort = argv[2];
-    std::string receiverPort = argv[3];
 
-    Sender sender(senderDes, senderPort);
-    Receiver receiver(receiverPort);
-
+    Sender sender(senderDes, senderPort, 3);
+    std::cout << "I AM HERE SENDER" << std::endl;
     sender.SendMessage("Hello world!");
-
-    receiver.ReceiveMessage();
 
 
     return 0;
