@@ -18,7 +18,7 @@ class Receiver : public SlidingWindow {
      * @param max: max window size
     */
     //Receiver(int max);
-    Receiver(std::string& listenPort);
+    Receiver(const std::string& listenPort);
 
     void Initialize();
 

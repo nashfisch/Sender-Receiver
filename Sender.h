@@ -11,7 +11,7 @@
 
 class Sender : public SlidingWindow {
   public:
-    Sender(std::string& destinationHost, std::string& destinationPort);
+    Sender(const std::string& destinationHost, const std::string& destinationPort);
     void Initialize();
     void SendMessage(const std::string& message);
 

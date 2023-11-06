@@ -14,7 +14,7 @@ int Sender::retransmit(){
     return unacknowledgedNums[0];
 }*/
 
-Sender::Sender(std::string& destinationHost, std::string& destinationPort) {
+Sender::Sender(const std::string& destinationHost, const std::string& destinationPort) {
     destHost = destinationHost;
     destPort = destinationPort;
     Initialize();
