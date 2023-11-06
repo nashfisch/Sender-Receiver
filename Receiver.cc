@@ -43,12 +43,16 @@ void Receiver::Initialize() {
 std::string Receiver::ReceiveMessage() {
     char buffer[1024];
     socklen_t clientAddressLength;
+    struct sockaddr_storage fromaddr;
+    clientAddressLength = sizeof(fromaddr);
     
-    ssize_t receivedBytes = recvfrom(sock, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&clientAddress, &clientAddressLength);
+    int receivedBytes = recvfrom(sock, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&clientAddress, &clientAddressLength);
     if (receivedBytes == -1) {
         std::cerr << "Error receiving data" << std::endl;
         return "";
     }
     buffer[receivedBytes] = 0;
     std::cout << buffer << std::endl;
+
+    close(sock);
 }
