@@ -15,7 +15,7 @@ Receiver::Receiver(int max) : SlidingWindow(max){
     setWinSize(1);
 }*/
 
-Receiver::Receiver(const std::string& listenPort) {
+Receiver::Receiver(std::string& listenPort, int max) : SlidingWindow(max) {
     lPort = listenPort;
     Initialize();
 }
