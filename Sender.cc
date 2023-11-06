@@ -14,7 +14,7 @@ int Sender::retransmit(){
     return unacknowledgedNums[0];
 }*/
 
-Sender::Sender(const std::string& destinationHost, const std::string& destinationPort) {
+Sender::Sender(std::string& destinationHost, std::string& destinationPort, int max) : SlidingWindow(max) {
     destHost = destinationHost;
     destPort = destinationPort;
     Initialize();
