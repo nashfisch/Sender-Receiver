@@ -20,12 +20,17 @@ class Receiver : public SlidingWindow {
     //Receiver(int max);
     Receiver(const std::string& listenPort);
 
-    void Initalize();
+    void Initialize();
 
     void BounceBack(const std::string& message);
+
+    std::string ReceiveMessage(); 
     
   private:
   const std::string lPort;
+  int sock;
+  sockaddr_in clientAddress;
+  socklen_t clientAddressLength;
     // Sequence number of the last in sequence frame received
     //int lastAck;
 };
