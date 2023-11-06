@@ -4,6 +4,8 @@
 
 class SlidingWindow {
   public:
+
+    SlidingWindow();
     /***
      * @brief Constructor
      * @param max: max window size

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Sender.h"
+#include "SlidingWindow.h"
 #include <string>
 #include <cstring>
 #include <sys/types.h>
@@ -13,7 +14,7 @@ int Sender::retransmit(){
     return unacknowledgedNums[0];
 }*/
 
-Sender::Sender(const std::string& destinationHost, const std::string& destinationPort) {
+Sender::Sender(std::string& destinationHost, std::string& destinationPort) {
     destHost = destinationHost;
     destPort = destinationPort;
     Initialize();

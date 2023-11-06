@@ -18,7 +18,7 @@ class Receiver : public SlidingWindow {
      * @param max: max window size
     */
     //Receiver(int max);
-    Receiver(const std::string& listenPort);
+    Receiver(std::string& listenPort);
 
     void Initialize();
 
@@ -27,7 +27,7 @@ class Receiver : public SlidingWindow {
     std::string ReceiveMessage(); 
     
   private:
-  const std::string lPort;
+  std::string lPort;
   int sock;
   sockaddr_in clientAddress;
   socklen_t clientAddressLength;

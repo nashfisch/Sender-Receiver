@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Receiver.h"
+#include "SlidingWindow.h"
 #include <string>
 #include <cstring>
 #include <sys/types.h>
@@ -14,7 +15,7 @@ Receiver::Receiver(int max) : SlidingWindow(max){
     setWinSize(1);
 }*/
 
-Receiver::Receiver(const std::string& listenPort) {
+Receiver::Receiver(std::string& listenPort) {
     lPort = listenPort;
     Initialize();
 }
@@ -43,10 +44,11 @@ std::string Receiver::ReceiveMessage() {
     char buffer[1024];
     socklen_t clientAddressLength;
     
-    ssize_t receivedBytes = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr*)&clientAddress, &clientAddressLength);
+    ssize_t receivedBytes = recvfrom(sock, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&clientAddress, &clientAddressLength);
     if (receivedBytes == -1) {
         std::cerr << "Error receiving data" << std::endl;
         return "";
     }
     buffer[receivedBytes] = 0;
+    std::cout << buffer << std::endl;
 }
