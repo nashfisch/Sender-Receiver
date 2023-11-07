@@ -45,4 +45,15 @@ void Sender::SendMessage(const std::string& message) {
         std::cerr << "Error sending the message" << std::endl;
         exit(1);
     }
+    char buffer[1024];
+    socklen_t clientAddressLength;
+    struct sockaddr_storage fromaddr;
+    clientAddressLength = sizeof(fromaddr);
+    
+    int receivedBytes = recvfrom(sock, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&fromaddr, &clientAddressLength);
+    if (receivedBytes == -1) {
+        std::cerr << "Error receiving data" << std::endl;
+    }
+    buffer[receivedBytes] = 0;
+    std::cout << "Received: " << buffer << std::endl;
 }
