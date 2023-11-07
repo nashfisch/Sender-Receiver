@@ -71,6 +71,7 @@ void Receiver::ReceiveMessage() {
     buffer[receivedBytes] = 0;
     std::cout << "Received: " << buffer << std::endl;
 
+    // Sendto used for bounceback
     sendto(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr*)&fromAddr, fromAddrLength);
 
     close(sock);

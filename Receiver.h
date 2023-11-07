@@ -16,6 +16,7 @@ public:
   /***
    * @brief Constructor
    * @param listenPort: The port number that the receiver listens to
+   * @param IPvType: The specified IPv that should be used
    * @param max: max window size
   */
   Receiver(std::string& listenPort, std::string& IPvType, int max);
@@ -41,8 +42,9 @@ private:
   sockaddr_in fromAddr;
   // Length of address of the sender
   socklen_t fromAddrLength;
-  // Sequence number of the last in sequence frame received
+  // String that stores the IPv that is being used. Should only ever be -4 or -6.
   std::string IPv = "-4";
+  // Sequence number of the last in sequence frame received
   //int lastAck;
 };
 
