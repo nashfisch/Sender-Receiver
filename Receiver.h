@@ -22,9 +22,7 @@ class Receiver : public SlidingWindow {
 
     void Initialize();
 
-    void BounceBack(const std::string& message);
-
-    std::string ReceiveMessage(); 
+    void ReceiveMessage(); 
     
   private:
   std::string lPort;
