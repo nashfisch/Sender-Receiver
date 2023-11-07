@@ -1,0 +1,7 @@
+1. Nash Fischer, Kaleb Calverly, Raj Pannu
+2. Open the terminal and navigate to a directory with all the submitted source files and the Makefile. Type "make" into the terminal and press enter. 
+   Navigate into the created "bin" directory. Here you can find exectutables for the server and receiver. Open a second terminal and connect via ssh to one of the 
+   remote student hosts, and then navigate that terminal window into the same "bin" directory as before. In the ssh terminal, type "receiver 2000", or any port number
+   greater than 1024. This will make the receiver listen for communications. Next in the local user terminal window, type "sender student0 2000", or whichever student
+   host/port number you selected. You should be prompted to enter a message. Type your message into the terminal and press enter, you should see that the message has 
+   bounced back. If you navigate to the receiving terminal window, indeed you can see that it has been received.
