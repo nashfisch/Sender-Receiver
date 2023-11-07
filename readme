@@ -5,3 +5,5 @@
    greater than 1024. This will make the receiver listen for communications. Next in the local user terminal window, type "sender student0 2000", or whichever student
    host/port number you selected. You should be prompted to enter a message. Type your message into the terminal and press enter, you should see that the message has 
    bounced back. If you navigate to the receiving terminal window, indeed you can see that it has been received.
+   The program accepts both IPv4 and IPv6. The sender uses the AF_UNSPEC value for the ai_family field to specify that any
+   socket family can be used for it. The receiver is different in that it takes an argument at the start of the program, either -4 or -6, and then from there, checks are done that switches the socket to either us AF_INET or AF_INET6. If something other than either of these is entered, the type is automatically set to AF_INET.

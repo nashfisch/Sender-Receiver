@@ -18,7 +18,7 @@ public:
    * @param listenPort: The port number that the receiver listens to
    * @param max: max window size
   */
-  Receiver(std::string& listenPort, int max);
+  Receiver(std::string& listenPort, std::string& IPvType, int max);
   //Receiver(int max);
 
   /***
@@ -38,10 +38,11 @@ private:
   // Socket
   int sock;
   // Address of the sender
-  sockaddr_in clientAddress;
+  sockaddr_in fromAddr;
   // Length of address of the sender
-  socklen_t clientAddressLength;
+  socklen_t fromAddrLength;
   // Sequence number of the last in sequence frame received
+  std::string IPv = "-4";
   //int lastAck;
 };
 
