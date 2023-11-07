@@ -1,4 +1,4 @@
-   #include "Sender.h"
+#include "Sender.h"
 #include "Receiver.h"
 #include <string>
 #include <cstring>
@@ -13,7 +13,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "Usage " << argv[0] << " receiver_port" << std::endl;
         return 1;
     }
-    std::cout << "I AM HERE RECEIVER" << std::endl;
     std::string receiverPort = argv[1];
 
 
