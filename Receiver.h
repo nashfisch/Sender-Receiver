@@ -12,25 +12,37 @@
 
 
 class Receiver : public SlidingWindow {
-  public:
-    /***
-     * @brief Constructor
-     * @param max: max window size
-    */
-    //Receiver(int max);
-    Receiver(std::string& listenPort, int max);
+public:
+  /***
+   * @brief Constructor
+   * @param listenPort: The port number that the receiver listens to
+   * @param max: max window size
+  */
+  Receiver(std::string& listenPort, int max);
+  //Receiver(int max);
 
-    void Initialize();
+  /***
+   * @brief Initializes and binds the socket supplied by the constructor
+  */
+  void Initialize();
 
-    void ReceiveMessage(); 
+  /***
+   * @brief Waits on the socket to receive a message from the sender, then 
+   *        returns the same message back to the sender as an acknowledgement.
+  */
+  void ReceiveMessage(); 
     
-  private:
+private:
+  // Port number being listened to
   std::string lPort;
+  // Socket
   int sock;
+  // Address of the sender
   sockaddr_in clientAddress;
+  // Length of address of the sender
   socklen_t clientAddressLength;
-    // Sequence number of the last in sequence frame received
-    //int lastAck;
+  // Sequence number of the last in sequence frame received
+  //int lastAck;
 };
 
 #endif

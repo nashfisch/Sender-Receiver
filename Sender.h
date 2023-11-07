@@ -10,21 +10,40 @@
 #include <netdb.h>
 
 class Sender : public SlidingWindow {
-  public:
-    Sender(std::string& destinationHost, std::string& destinationPort, int max);
-    void Initialize();
-    void SendMessage(const std::string& message);
+public:
+  /***
+   * @brief Constructor for Sender
+   * @param destinationHost: The host name of where the message is to be sent
+   * @param destinationPort: The port # of the destination (receiver)
+   * @param max: Ignored value included in parent class constructor.
+  */
+  Sender(std::string& destinationHost, std::string& destinationPort, int max);
 
-    //bool req(int SN);
-    //int retransmit();
-   
+  /***
+   * @brief Initializes and binds the socket supplied by the constructor
+  */
+  void Initialize();
+
+  /***
+   * @brief Sends a message to the receiver.
+   * @param message: The message that is to be sent
+  */
+  void SendMessage(const std::string& message);
+
+  //bool req(int SN);
+  //int retransmit();
+  
 
 
-  private:
-    std::string destHost;
-    std::string destPort;
-    int sock;
-    struct addrinfo* destAddr;
+private:
+  // Host name of receiver
+  std::string destHost;
+  // Port # of receiver
+  std::string destPort;
+  // Socket to connect to receiver
+  int sock;
+  // Gives us address and information
+  struct addrinfo* destAddr;
     
 };
 

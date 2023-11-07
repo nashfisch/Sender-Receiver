@@ -42,7 +42,7 @@ void Receiver::Initialize() {
 //originally std::string, removed to get rid of the warning
 void Receiver::ReceiveMessage() {
     char buffer[1024];
-    socklen_t clientAddressLength;
+    // socklen_t clientAddressLength;
     struct sockaddr_storage fromaddr;
     clientAddressLength = sizeof(fromaddr);
     
