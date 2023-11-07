@@ -16,10 +16,12 @@ int main(int argc, char* argv[]) {
 
     std::string senderDes = argv[1];
     std::string senderPort = argv[2];
+    std::string message = "";
 
     Sender sender(senderDes, senderPort, 3);
-    std::cout << "I AM HERE SENDER" << std::endl;
-    sender.SendMessage("Hello world!");
+    std::cout << "Enter a message: ";
+    std::getline(std::cin, message);
+    sender.SendMessage(message);
 
 
     return 0;
