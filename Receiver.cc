@@ -39,8 +39,8 @@ void Receiver::Initialize() {
 }
 
 
-
-std::string Receiver::ReceiveMessage() {
+//originally std::string, removed to get rid of the warning
+void Receiver::ReceiveMessage() {
     char buffer[1024];
     socklen_t clientAddressLength;
     struct sockaddr_storage fromaddr;
@@ -49,10 +49,12 @@ std::string Receiver::ReceiveMessage() {
     int receivedBytes = recvfrom(sock, buffer, sizeof(buffer)-1, 0, (struct sockaddr*)&clientAddress, &clientAddressLength);
     if (receivedBytes == -1) {
         std::cerr << "Error receiving data" << std::endl;
-        return "";
     }
     buffer[receivedBytes] = 0;
-    std::cout << buffer << std::endl;
+    std::cout << "Received: " << buffer << std::endl;
+
+    sendto(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr*)&clientAddress, clientAddressLength);
 
     close(sock);
 }
+
